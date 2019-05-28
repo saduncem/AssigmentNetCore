@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model ObiletAssingment.Models.IndexViewModel
+
+  
+
+<div class="d-flex justify-content-center bd-highlight mb-3 " id="indexpage">
+        <div id="exampleModal" class="justify-content-center modal ">
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+            </div>
+
+        </div>
+        <div class="p-2">
+            <form class="form-inline" id="myForm" name="myForm">
+                <ul class="list-group border-bottom-0" id="list">
+                    <li class="list-group-flush"> <div class="p-5 header" id="headers"></div></li>
+                    <li class="list-group-flush"> </li>
+                    <li class="list-group-item "><strong class="d-block" style="color:#2F4EB4;">Nerden </strong></li>
+                    <li class="list-group-item">
+                        <div class="d-flex flex-sm-row">
+                            <div class="p-2">
+                                <i class="fas fa-map-marker-alt">
+                                </i>
+                            </div>
+                            <div class="p-1">
+                                <select name="OutDestination" id="OutDestination" class="form-control" asp-for="Name" asp-items="@Model.OutDestination"></select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-flush">
+                        <div class="col-sm-12 themed-grid-col text-sm-right">
+                            <a href="avascript:void(0)" class="change" onclick="ChangeLocaiton()"><img src="~/image/arrow_up_down.png" width="28" /></a>
+                        </div>
+                    </li>
+                    <li class="list-group-item "><strong class="d-block" style="color:#2F4EB4">Nereye </strong></li>
+                    <li class="list-group-item">
+                        <div class="d-flex flex-sm-row">
+                            <div class="p-2">
+                                <i class="fas fa-map-marker-alt">
+                                </i>
+                            </div>
+                            <div class="p-1">
+                                <select id="InDestination" class="form-control" name="InDestination" asp-for="Name" asp-items="@Model.InDestination"></select>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="list-group-flush"><div style="padding:10px;"></div></li>
+                    <li class="list-group-item "><strong class="d-block" style="color:#2F4EB4">Tarih </strong></li>
+                    <li class="list-group-item ">
+                        @*<div class="d-flex justify-content-start">a...</div>
+                        <div class="d-flex justify-content-end">...</div>*@
+
+                        <div class="d-flex flex-nowrap">
+                            <div class="order-1 p-2">
+                                <div class="form-group">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+
+                                </div>
+                            </div>
+                            <div class="order-2 p-2"><input class=" form-control small flatpickr flatpickr-input active" name="transferdate" id="transferdate" type="text" placeholder="Select Date.." readonly="readonly"></div>
+                            <div class="order-3">
+
+                                <div class="d-flex align-items-end flex-column">
+                                    <div class="p-1"><button type="button" class="btn btn-secondary" onclick="GetToday()">Bugün</button></div>
+                                    <div class="p-1"><button type="button" class="btn btn-outline-dark" onclick="GetTommorrow()" style="width:71px">Yarın</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item "><button type="button" class="btn btn-primary btn-lg  btn-block" onclick="GetTicket()">Bilet Bul</button></li>
+                </ul>
+            </form>
+        </div>
+
+    </div>
+<div class="justify-content-center bd-highlight mb-3 journeypageclass " id="journeypage">
+
+    <div class="p-2">
+        <div class="p-5 header" id="headers">
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                    <div class="d-flex flex-row bd-highlight mb-1">
+                        <div class="p-1 bd-highlight " onclick="MainAction();" style="cursor: pointer;">
+                            <img src="~/image/white-arrow-icon-png-14.jpg" width="28" />
+                        </div>
+                        <div class="p-1 bd-highlight"><strong style="color:#ffffff"> İstanbul Avrupa - Ankara</strong></div>
+                    </div>
+                </div>
+                <span class="text-white" >@DateTime.Now.Date.ToLocalTime()</span>
+            </div>
+        </div>
+        <div class="list-group journeylistclass" id="journeylist">
+        </div>
+        
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/js/obilet.js" asp-append-version="true"></script>
+}
